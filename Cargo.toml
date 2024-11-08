@@ -1,0 +1,10 @@
+[package]
+name = "diesel_uint_test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+diesel = { version = "2.2", features = ["postgres"] }
+diesel_migrations = { version = "2.2", features = ["postgres"] }
+dotenvy = "0.15"
+ruint = { git = "https://github.com/sinasab/uint.git", branch = "sina/diesel-support", features = ["diesel"] }
