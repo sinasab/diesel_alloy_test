@@ -7,4 +7,6 @@ edition = "2021"
 diesel = { version = "2.2", features = ["postgres"] }
 diesel_migrations = { version = "2.2", features = ["postgres"] }
 dotenvy = "0.15"
-ruint = { git = "https://github.com/sinasab/uint.git", branch = "sina/diesel-support", features = ["diesel"] }
+alloy-primitives = { git = "https://github.com/sinasab/alloy-core.git", branch = "sina/adding-diesel-support", package = "alloy-primitives", features = ["diesel", "getrandom"] }
+alloy-signer = { git = "https://github.com/sinasab/alloy-alloy.git", branch = "sina/tmp-alloy-core-diesel", package = "alloy-signer" }
+alloy-signer-local = { git = "https://github.com/sinasab/alloy-alloy.git", branch = "sina/tmp-alloy-core-diesel", package = "alloy-signer-local" }

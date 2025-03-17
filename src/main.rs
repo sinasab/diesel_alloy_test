@@ -1,4 +1,4 @@
-use diesel_uint_test::*;
+use diesel_alloy_test::*;
 
 fn main() {
     println!("establishing db connection");
@@ -14,6 +14,7 @@ fn main() {
     let results = get_users(connection).unwrap();
     for user in results {
         println!("{}", user);
+        validate_user(&user).unwrap();
     }
 
     println!("querying db for users with filter");
