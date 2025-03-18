@@ -1,9 +1,9 @@
-pub use crate::{models::*, schema::*};
-use alloy_primitives::{address, Address, B256};
+use crate::{models::*, schema::*};
+use alloy_primitives::{Address, PrimitiveSignature, B256};
 use alloy_signer::SignerSync;
 use alloy_signer_local::PrivateKeySigner;
-use diesel::{ExpressionMethods, PgConnection, QueryDsl, RunQueryDsl, SelectableHelper};
-use std::error::Error;
+use diesel::{PgConnection, QueryDsl, RunQueryDsl, SelectableHelper};
+use std::{error::Error, str::FromStr};
 
 // Generate a random signer and hash.
 // A user record consists of:
@@ -15,14 +15,14 @@ fn get_random_user() -> User {
     let random_hash = B256::random();
     let sig = random_signer.sign_hash_sync(&random_hash).unwrap();
     User {
-        addr: random_signer.address(),
-        sig,
+        addr: Address::from_str(&random_signer.address().to_string()).unwrap(),
+        sig: PrimitiveSignature::from_str(&sig.to_string()).unwrap(),
         hash: random_hash,
     }
 }
 
 pub fn validate_user(user: &User) -> Result<(), String> {
-    let recovered_address = user.sig.recover(&user.hash).unwrap();
+    let recovered_address = user.sig.recover_address_from_prehash(&user.hash).unwrap();
     if recovered_address != user.addr {
         return Err("Invalid signature".to_string());
     }
@@ -39,35 +39,21 @@ pub fn seed_data(
     Ok(())
 }
 
-fn upsert_user(
-    connection: &mut PgConnection,
-    user: &User,
-) -> Result<(), Box<dyn Error + Send + Sync + 'static>> {
+fn upsert_user(connection: &mut PgConnection, user: &User) -> Result<(), String> {
     diesel::insert_into(users::table)
         .values(user)
         .on_conflict(users::addr)
         .do_update()
         .set(user)
-        .execute(connection)?;
+        .execute(connection)
+        .map_err(|_| "Failed to upsert user")?;
     Ok(())
 }
 
-pub fn get_users(
-    connection: &mut PgConnection,
-) -> Result<Vec<User>, Box<dyn Error + Send + Sync + 'static>> {
+pub fn get_users(connection: &mut PgConnection) -> Result<Vec<User>, String> {
     let users = users::table
         .select(User::as_select())
-        .load::<User>(connection)?;
-    Ok(users)
-}
-
-pub fn get_users_with_filter(
-    connection: &mut PgConnection,
-    addr: Address,
-) -> Result<Vec<User>, Box<dyn Error + Send + Sync + 'static>> {
-    let users = users::table
-        .select(User::as_select())
-        .filter(users::addr.eq(addr))
-        .load::<User>(connection)?;
+        .get_results(connection)
+        .map_err(|_| "Failed to get users")?;
     Ok(users)
 }

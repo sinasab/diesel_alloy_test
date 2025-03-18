@@ -5,10 +5,11 @@ version = 4
 [[package]]
 name = "alloy-consensus"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a84efb7b8ddb9223346bfad9d8094e1a100c254037a3b5913243bfa8e04be266"
 dependencies = [
  "alloy-eips",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-rlp",
  "alloy-serde",
  "alloy-trie",
@@ -27,11 +28,12 @@ dependencies = [
 [[package]]
 name = "alloy-consensus-any"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fafded0c1ff8f0275c4a484239058e1c01c0c2589f8a16e03669ef7094a06f9b"
 dependencies = [
  "alloy-consensus",
  "alloy-eips",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-rlp",
  "alloy-serde",
  "serde",
@@ -43,7 +45,7 @@ version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "675264c957689f0fd75f5993a73123c2cc3b5c235a38f5b9037fe6c826bfb2c0"
 dependencies = [
- "alloy-primitives 0.8.23 (registry+https://github.com/rust-lang/crates.io-index)",
+ "alloy-primitives",
  "alloy-rlp",
  "crc",
  "serde",
@@ -56,7 +58,7 @@ version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0069cf0642457f87a01a014f6dc29d5d893cd4fd8fddf0c3cdfad1bb3ebafc41"
 dependencies = [
- "alloy-primitives 0.8.23 (registry+https://github.com/rust-lang/crates.io-index)",
+ "alloy-primitives",
  "alloy-rlp",
  "serde",
 ]
@@ -67,7 +69,7 @@ version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b15b13d38b366d01e818fe8e710d4d702ef7499eacd44926a06171dd9585d0c"
 dependencies = [
- "alloy-primitives 0.8.23 (registry+https://github.com/rust-lang/crates.io-index)",
+ "alloy-primitives",
  "alloy-rlp",
  "serde",
  "thiserror",
@@ -76,12 +78,13 @@ dependencies = [
 [[package]]
 name = "alloy-eips"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5f4bffedaddc627520eabdcbfe27a2d2c2f716e15295e2ed1010df3feae67040"
 dependencies = [
  "alloy-eip2124",
  "alloy-eip2930",
  "alloy-eip7702",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-rlp",
  "alloy-serde",
  "auto_impl",
@@ -99,7 +102,7 @@ version = "0.8.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec80745c33797e8baf547a8cfeb850e60d837fe9b9e67b3f579c1fcd26f527e9"
 dependencies = [
- "alloy-primitives 0.8.23 (registry+https://github.com/rust-lang/crates.io-index)",
+ "alloy-primitives",
  "alloy-sol-type-parser",
  "serde",
  "serde_json",
@@ -108,9 +111,10 @@ dependencies = [
 [[package]]
 name = "alloy-json-rpc"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6929e607b0a56803c69c68adc6e8aae1644c94e37ea458aa2d0713fc77490e70"
 dependencies = [
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-sol-types",
  "serde",
  "serde_json",
@@ -121,14 +125,15 @@ dependencies = [
 [[package]]
 name = "alloy-network"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c2b14524c3605ed5ee173b966333089474415416a8cfd80ceb003c18fd6d1736"
 dependencies = [
  "alloy-consensus",
  "alloy-consensus-any",
  "alloy-eips",
  "alloy-json-rpc",
  "alloy-network-primitives",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-rpc-types-any",
  "alloy-rpc-types-eth",
  "alloy-serde",
@@ -146,40 +151,14 @@ dependencies = [
 [[package]]
 name = "alloy-network-primitives"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4c06932646544ea341f0fda48d2c0fe4fda75bc132379cb84019cdfb6ddcb0fb"
 dependencies = [
  "alloy-consensus",
  "alloy-eips",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-serde",
  "serde",
-]
-
-[[package]]
-name = "alloy-primitives"
-version = "0.8.23"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eacedba97e65cdc7ab592f2b22ef5d3ab8d60b2056bc3a6e6363577e8270ec6f"
-dependencies = [
- "alloy-rlp",
- "bytes",
- "cfg-if",
- "const-hex",
- "derive_more 2.0.1",
- "foldhash",
- "hashbrown 0.15.2",
- "indexmap 2.8.0",
- "itoa",
- "k256",
- "keccak-asm",
- "paste",
- "proptest",
- "rand",
- "ruint",
- "rustc-hash",
- "serde",
- "sha3",
- "tiny-keccak",
 ]
 
 [[package]]
@@ -236,7 +215,8 @@ dependencies = [
 [[package]]
 name = "alloy-rpc-types-any"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2cd4ceea38ea27eeb26f021df34ed5b7b793704ad7a2a009f16137a19461e7ca"
 dependencies = [
  "alloy-consensus-any",
  "alloy-rpc-types-eth",
@@ -246,13 +226,14 @@ dependencies = [
 [[package]]
 name = "alloy-rpc-types-eth"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8e18d94b1036302720b987564560e4a5b85035a17553c53a50afa2bd8762b487"
 dependencies = [
  "alloy-consensus",
  "alloy-consensus-any",
  "alloy-eips",
  "alloy-network-primitives",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-rlp",
  "alloy-serde",
  "alloy-sol-types",
@@ -265,9 +246,10 @@ dependencies = [
 [[package]]
 name = "alloy-serde"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9824e1bf92cd7848ca6fabb01c9aca15c9c5fb0ab96da5514ef0543f021c69f6"
 dependencies = [
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "serde",
  "serde_json",
 ]
@@ -275,9 +257,10 @@ dependencies = [
 [[package]]
 name = "alloy-signer"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "81755ed6a6a33061302ac95e9bb7b40ebf7078e4568397168024242bc31a3e58"
 dependencies = [
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "async-trait",
  "auto_impl",
  "either",
@@ -289,11 +272,12 @@ dependencies = [
 [[package]]
 name = "alloy-signer-local"
 version = "0.12.5"
-source = "git+https://github.com/sinasab/alloy-alloy.git?branch=sina%2Ftmp-alloy-core-diesel#4d08146eefbf0c9a59359223e7529315a8a7725e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aa857621a5c95c13e640e18bb9c4720f4338a666d6276f55446477a6bc3912ff"
 dependencies = [
  "alloy-consensus",
  "alloy-network",
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
+ "alloy-primitives",
  "alloy-signer",
  "async-trait",
  "k256",
@@ -366,7 +350,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "767957235807b021126dca1598ac3ef477007eace07961607dc5f490550909c7"
 dependencies = [
  "alloy-json-abi",
- "alloy-primitives 0.8.23 (registry+https://github.com/rust-lang/crates.io-index)",
+ "alloy-primitives",
  "alloy-sol-macro",
  "const-hex",
  "serde",
@@ -378,7 +362,7 @@ version = "0.7.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d95a94854e420f07e962f7807485856cde359ab99ab6413883e15235ad996e8b"
 dependencies = [
- "alloy-primitives 0.8.23 (registry+https://github.com/rust-lang/crates.io-index)",
+ "alloy-primitives",
  "alloy-rlp",
  "arrayvec",
  "derive_more 1.0.0",
@@ -935,6 +919,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "diesel_alloy_test"
+version = "0.1.0"
+dependencies = [
+ "alloy-primitives",
+ "alloy-signer",
+ "alloy-signer-local",
+ "diesel",
+ "diesel_migrations",
+ "dotenvy",
+]
+
+[[package]]
 name = "diesel_derives"
 version = "2.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -965,18 +961,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "209c735641a413bc68c4923a9d6ad4bcb3ca306b794edaa7eb0b3228a99ffb25"
 dependencies = [
  "syn 2.0.100",
-]
-
-[[package]]
-name = "diesel_uint_test"
-version = "0.1.0"
-dependencies = [
- "alloy-primitives 0.8.23 (git+https://github.com/sinasab/alloy-core.git?branch=sina%2Fadding-diesel-support)",
- "alloy-signer",
- "alloy-signer-local",
- "diesel",
- "diesel_migrations",
- "dotenvy",
 ]
 
 [[package]]

@@ -13,14 +13,8 @@ fn main() {
     println!("querying db for all users");
     let results = get_users(connection).unwrap();
     for user in results {
-        println!("{}", user);
+        println!("{:#?}", user);
         validate_user(&user).unwrap();
-    }
-
-    println!("querying db for users with filter");
-    let results = get_users_with_filter(connection).unwrap();
-    for user in results {
-        println!("{}", user);
     }
 
     println!("done!");
