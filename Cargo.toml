@@ -8,8 +8,8 @@ diesel = { version = "2.2", features = ["postgres"] }
 diesel_migrations = { version = "2.2", features = ["postgres"] }
 dotenvy = "0.15"
 alloy-primitives = { git = "https://github.com/sinasab/alloy-core.git", branch = "sina/adding-diesel-support", package = "alloy-primitives", features = ["diesel", "getrandom"] }
-alloy-signer = "0.12.5"
-alloy-signer-local = "0.12.5"
+alloy-signer = "0.12.6"
+alloy-signer-local = "0.12.6"
 
 [patch.crates-io]
 alloy-primitives = { git = "https://github.com/sinasab/alloy-core.git", branch = "sina/adding-diesel-support", package = "alloy-primitives" }

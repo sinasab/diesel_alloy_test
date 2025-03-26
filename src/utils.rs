@@ -1,5 +1,5 @@
 use crate::{models::*, schema::*};
-use alloy_primitives::{Address, PrimitiveSignature, B256};
+use alloy_primitives::{Address, Signature, B256};
 use alloy_signer::SignerSync;
 use alloy_signer_local::PrivateKeySigner;
 use diesel::{insert_into, PgConnection, QueryDsl, RunQueryDsl, SelectableHelper};
@@ -22,7 +22,7 @@ fn get_random_user() -> User {
     };
     User {
         addr: Address::from_str(&random_signer.address().to_string()).unwrap(),
-        sig: PrimitiveSignature::from_str(&sig.to_string()).unwrap(),
+        sig: Signature::from_str(&sig.to_string()).unwrap(),
         hash: random_hash,
         maybe_hash,
     }
