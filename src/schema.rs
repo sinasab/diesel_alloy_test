@@ -3,5 +3,6 @@ diesel::table! {
         addr -> Bytea,
         hash -> Bytea,
         sig -> Bytea,
+        maybe_hash -> Nullable<Bytea>,
     }
 }

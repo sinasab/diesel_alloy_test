@@ -13,7 +13,7 @@ fn main() {
     println!("querying db for all users");
     let results = get_users(connection).unwrap();
     for user in results {
-        println!("{:#?}", user);
+        println!("Fetched user: {:#?}", user);
         validate_user(&user).unwrap();
     }
 

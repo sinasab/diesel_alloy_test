@@ -7,4 +7,5 @@ pub struct User {
     pub addr: Address,
     pub hash: B256,
     pub sig: PrimitiveSignature,
+    pub maybe_hash: Option<B256>,
 }

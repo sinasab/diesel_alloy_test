@@ -2,7 +2,7 @@ use crate::{models::*, schema::*};
 use alloy_primitives::{Address, PrimitiveSignature, B256};
 use alloy_signer::SignerSync;
 use alloy_signer_local::PrivateKeySigner;
-use diesel::{PgConnection, QueryDsl, RunQueryDsl, SelectableHelper};
+use diesel::{insert_into, PgConnection, QueryDsl, RunQueryDsl, SelectableHelper};
 use std::{error::Error, str::FromStr};
 
 // Generate a random signer and hash.
@@ -10,14 +10,21 @@ use std::{error::Error, str::FromStr};
 // - the address of that signer
 // - the random hash
 // - signature over the hash by the signer
+// - a random hash that is sometimes None
 fn get_random_user() -> User {
     let random_signer = PrivateKeySigner::random();
     let random_hash = B256::random();
     let sig = random_signer.sign_hash_sync(&random_hash).unwrap();
+    let maybe_hash = B256::random();
+    let maybe_hash = match maybe_hash[0] & 1 == 1 {
+        true => Some(maybe_hash),
+        false => None,
+    };
     User {
         addr: Address::from_str(&random_signer.address().to_string()).unwrap(),
         sig: PrimitiveSignature::from_str(&sig.to_string()).unwrap(),
         hash: random_hash,
+        maybe_hash,
     }
 }
 
@@ -32,15 +39,16 @@ pub fn validate_user(user: &User) -> Result<(), String> {
 pub fn seed_data(
     connection: &mut PgConnection,
 ) -> Result<(), Box<dyn Error + Send + Sync + 'static>> {
-    for _ in 0..10 {
+    for _ in 0..3 {
         let user = get_random_user();
+        println!("upserting user: {:#?}", user);
         upsert_user(connection, &user)?;
     }
     Ok(())
 }
 
 fn upsert_user(connection: &mut PgConnection, user: &User) -> Result<(), String> {
-    diesel::insert_into(users::table)
+    insert_into(users::table)
         .values(user)
         .on_conflict(users::addr)
         .do_update()
